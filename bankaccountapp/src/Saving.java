@@ -7,8 +7,25 @@ public class Saving extends Account {
     public Saving(String name,String ssn, double initDeposit) {
         super(name, ssn, initDeposit);
         accountNumber = "2" + accountNumber;
-        System.out.println("SAVINGS ACCOUNT CREATED");
-        System.out.println("ACCOUNT NUMBER: " + accountNumber);
+        setSafetyDepositBox();
     }
-    // List any methods specific to savings account
+
+    @Override
+    public void setRate() {
+        rate = getBaseRate() - 0.25;
+    }
+
+    private void setSafetyDepositBox() {
+        safety_deposit_boxID = (int) (Math.random()* 1000);
+        safety_deposit_boxKEY= (int) (Math.random() * 10000);
+
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("ACCOUNT TYPE: Savings");
+        super.printInfo();
+        System.out.println("Savings Account Features: " + "\n SAFETY DEPOSIT BOX ID: " +
+                safety_deposit_boxID + "\n SAFETY DEPOSIT BOX KEY: " + safety_deposit_boxKEY);
+    }
 }

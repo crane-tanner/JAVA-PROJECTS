@@ -7,11 +7,25 @@ public class Checking extends Account {
     public Checking(String name, String ssn, double initDeposit) {
         super(name, ssn, initDeposit);
         accountNumber = "1" + accountNumber;
-        System.out.println("CHECKING ACCOUNT CREATED");
-        System.out.println("ACCOUNT NUMBER: " + accountNumber);
-
+        setDebitCard();
     }
 
     // List any methods specific to the checking account
+    private void setDebitCard() {
+        debitCardNumber = (int) (Math.random() * Math.pow(10, 12));
+        card_PIN = (int) (Math.random() * 10000);
+    }
+    @Override
+    public void setRate() {
+        rate = getBaseRate()*.15;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("ACCOUNT TYPE: Checking");
+        super.printInfo();
+        System.out.println("Checking Account Features: " + "\n Debit Card Number: " + debitCardNumber + "\n PIN: " +
+                card_PIN);
+    }
 
 }
